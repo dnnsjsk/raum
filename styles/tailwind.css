@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply overscroll-none;
+  font-family: Inter, sans-serif;
+}
+
+*,
+*:active,
+*:focus {
+  outline: none !important;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  @apply bg-true-gray-900;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-true-gray-700;
+}
