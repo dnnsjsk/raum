@@ -5,7 +5,6 @@ import { useStore as useEditorStore } from "../store/editor";
 import { useStore as useProjectStore } from "../store/projects";
 import useClipboard from "react-use-clipboard";
 import { getUnique } from "../utils/getUnique";
-import { getDoc } from "../utils/getDoc";
 
 import TopBarButton from "./topbar-button";
 import TopBarIcon from "./topbar-icon";
@@ -25,13 +24,12 @@ export default function TopBar() {
   const setProject = useProjectStore((state) => state.setProject);
 
   const [copied, setCopied] = useClipboard(
-    `${window.location}?r=${btoa(
+    `${window.location}?r=${encodeURIComponent(
       JSON.stringify({
         name: current,
         css: currentCSS,
         html: currentHTML,
         js: currentJS,
-        code: getDoc(currentCSS, currentHTML, currentJS),
       })
     )}`
   );

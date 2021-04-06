@@ -87,7 +87,7 @@ export default function Editor() {
     if (window.location.href.includes("?r=")) {
       const newId = getUnique();
       const string = window.location.href.split("?r=").pop();
-      const object = JSON.parse(atob(string));
+      const object = JSON.parse(decodeURIComponent(string));
       setAllProjects(
         newId,
         {
