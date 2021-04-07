@@ -77,6 +77,8 @@ export default function Editor() {
         height,
       });
     });
+
+    document.body.classList.add("loaded");
   }
 
   useEffect(() => {
@@ -157,8 +159,6 @@ export default function Editor() {
     }
 
     setProjectsCount();
-
-    document.body.classList.add("loaded");
   });
 
   return (
