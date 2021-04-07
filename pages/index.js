@@ -28,14 +28,6 @@ export default function Index() {
 
   useEffect(() => {
     if (window.location.href.includes("?r=")) {
-      setActive("editor");
-    }
-
-    window.addEventListener("popstate", function (event) {
-      console.log(event);
-    });
-
-    if (window.location.href.includes("?r=")) {
       const newId = getUnique();
       const string = window.location.href.split("?r=").pop();
       const object = JSON.parse(decodeURIComponent(string));
@@ -55,6 +47,7 @@ export default function Index() {
         object["html"],
         object["js"]
       );
+      setActive("editor");
       setEditor("js");
       history.replaceState("default", "", window.location.href.split("?r=")[0]);
     } else if (!localStorage.getItem("projects") || isEmpty(projects)) {
