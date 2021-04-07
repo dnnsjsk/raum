@@ -20,7 +20,7 @@ export default function SidebarButton(props) {
     >
       {props.type === "projects" && (
         <span
-          className={`absolute text-[6px] font-mono right-0 top-0 w-3 h-3 md:text-[8px] md:h-5 md:w-5 flex items-center justify-center ${style.color} ${style.colorOpacity}`}
+          className={`absolute text-[8px] font-mono right-0 top-0 w-3 h-3 md:text-[10px] md:h-5 md:w-5 flex items-center justify-center ${style.color} ${style.colorOpacity}`}
         >
           {projectsCount}
         </span>
