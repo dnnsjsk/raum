@@ -19,7 +19,9 @@ export default function SidebarButton(props) {
         ${active === props.type ? "text-opacity-100" : style.colorOpacity}`}
     >
       {props.type === "projects" && (
-        <span className={`bg-blue-500 absolute text-white text-[9px] font-mono right-1 top-1 w-3 h-3 md:top-2 md:right-2 md:h-4 md:w-4 flex items-center justify-center rounded-full top-0`}>
+        <span
+          className={`absolute text-[6px] font-mono right-0 top-0 w-3 h-3 md:text-[8px] md:h-5 md:w-5 flex items-center justify-center ${style.color} ${style.colorOpacity}`}
+        >
           {projectsCount}
         </span>
       )}
