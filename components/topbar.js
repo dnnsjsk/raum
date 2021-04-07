@@ -20,7 +20,6 @@ export default function TopBar() {
   const icon = `w-5`;
   const id = getUnique();
   const moreLink = `text-white text-sm whitespace-nowrap py-1 cursor-pointer hover:underline`;
-  const setActive = useStore((state) => state.setActive);
   const setAll = useEditorStore((state) => state.setAll);
   const setEditorMobile = useEditorStore((state) => state.setEditorMobile);
   const setProject = useProjectStore((state) => state.setProject);
@@ -43,7 +42,6 @@ export default function TopBar() {
     setProject(id, "js", currentJS);
     setAll(id, current + " Duplicate", currentCSS, currentHTML, currentJS);
     setProjectsCount();
-    setActive("editor", id);
     setEditorMobile(true);
   }
 
@@ -53,7 +51,6 @@ export default function TopBar() {
     setProject(id, "js", "");
     setAll(id, text.emptyProject, "", "", "");
     setProjectsCount();
-    setActive("editor", id);
     setEditorMobile(true);
   }
 

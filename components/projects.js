@@ -14,7 +14,6 @@ export default function Projects() {
   const language = useEditorStore((state) => state.editor);
   const projects = useProjectStore((state) => state.projects);
   const projectsLength = Object.keys(projects).length;
-  const setActive = useStore((state) => state.setActive);
   const setAll = useEditorStore((state) => state.setAll);
   const setEditorMobile = useEditorStore((state) => state.setEditorMobile);
   const setProject = useProjectStore((state) => state.setProject);
@@ -31,7 +30,6 @@ export default function Projects() {
       projects[id]["html"],
       projects[id]["js"]
     );
-    setActive("editor", id);
   }
 
   function handleDelete(e, id) {
@@ -63,7 +61,6 @@ export default function Projects() {
     setAll(id, text.emptyProject, "", "", "");
     setProjectsCount();
     setEditorMobile(true);
-    setActive("editor", id);
   }
 
   return (

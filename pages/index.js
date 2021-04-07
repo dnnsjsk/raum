@@ -47,7 +47,6 @@ export default function Index() {
         object["html"],
         object["js"]
       );
-      setActive("editor");
       setEditor("js");
       history.replaceState("default", "", window.location.href.split("?r=")[0]);
     } else if (!localStorage.getItem("projects") || isEmpty(projects)) {
@@ -57,7 +56,6 @@ export default function Index() {
         js: "",
       });
       setAll(id, text.emptyProject, "", "", "");
-      setActive("editor", id);
     } else if (
       window.location.href.includes("/project/") &&
       projects.current[window.location.href.split("/project/").pop()]
@@ -75,7 +73,6 @@ export default function Index() {
         projects.current[splitId]["html"],
         projects.current[splitId]["js"]
       );
-      setActive("editor", splitId);
     } else if (window.location.href.includes("projects")) {
       setActive("projects");
     } else if (localStorage.getItem("projects")) {
@@ -91,7 +88,6 @@ export default function Index() {
         projects.current[id]["html"],
         projects.current[id]["js"]
       );
-      setActive("editor", id);
     }
 
     setProjectsCount();

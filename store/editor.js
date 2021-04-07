@@ -9,16 +9,6 @@ export const useStore = create(
       active: "editor",
       setActive: (value, id = false) => {
         set({ active: value });
-
-        const obj = {
-          id: value,
-          randomData: Math.random(),
-        };
-        if (id === false) {
-          history.replaceState(obj, "", "/" + value);
-        } else {
-          history.replaceState(obj, "", "/project/" + id);
-        }
       },
       editor: "js",
       setEditor: (value) => set({ editor: value }),
@@ -37,14 +27,22 @@ export const useStore = create(
       currentJS: "",
       setCurrentJS: (value) =>
         set({ currentJS: value === "" || value === undefined ? "" : value }),
-      setAll: (id, current, css, html, js) =>
+      setAll: (id, current, css, html, js) => {
         set({
           current: current,
           currentID: id,
           currentCSS: css,
           currentHTML: html,
           currentJS: js,
-        }),
+        });
+        history.replaceState(
+          {
+            id: value,
+          },
+          "",
+          "/project/" + id
+        );
+      },
     }),
     {
       name: "general",
