@@ -18,9 +18,9 @@ body {
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  @apply bg-true-gray-900;
+  @apply bg-gray-900;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-true-gray-700;
+  @apply bg-gray-700;
 }

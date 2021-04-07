@@ -127,7 +127,7 @@ export default function Editor() {
         inherit: true,
         rules: [],
         colors: {
-          "editor.background": "#171717",
+          "editor.background": "#18181B",
         },
       });
     }

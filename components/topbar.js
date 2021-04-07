@@ -86,14 +86,14 @@ export default function TopBar() {
                 <Menu.Button
                   className={`h-full flex border-b-2 border-transparent ${
                     style.hover
-                  } ${open && "border-true-gray-800"}`}
+                  } ${open && "border-gray-800"}`}
                 >
                   <TopBarIcon active={open}>
                     <DotsHorizontalIcon className={icon} />
                   </TopBarIcon>
                 </Menu.Button>
                 <Menu.Items
-                  className={`absolute top-[40px] rounded-b md:rounded-bl right-0 flex flex-col py-2 px-4 bg-true-gray-800 shadow-lg border ${style.border}`}
+                  className={`absolute top-[40px] rounded-b md:rounded-bl right-0 flex flex-col py-2 px-4 bg-gray-800 shadow-lg border ${style.border}`}
                 >
                   <Menu.Item onClick={setCopied}>
                     <a className={moreLink}>Copy Project</a>

@@ -22,7 +22,7 @@ export default function TopBarIcon(props) {
       onClick={props.type === "primary" ? handleSwitchViews : props.onClick}
       className={`text-white w-10 flex items-center justify-center h-full ${
         props.active
-          ? "!bg-true-gray-800 !text-opacity-100 " + style.hover
+          ? "!bg-gray-800 !text-opacity-100 " + style.hover
           : (props.type === "primary" ? "text-opacity-100" : style.colorOpacity)
           ? props.type !== "primary"
             ? style.hover + " " + style.colorOpacity

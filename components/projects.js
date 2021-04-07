@@ -72,7 +72,7 @@ export default function Projects() {
         className={`flex h-[40px] sticky top-0 z-10 ${style.bg} justify-between items-center flex-wrap px-3 border-b ${style.border}`}
       >
         <h1
-          className={`text-true-gray-500 text-sm border-b-2 border-transparent`}
+          className={`text-gray-500 text-sm border-b-2 border-transparent`}
         >
           <strong className={`font-semibold text-white`}>
             {projectsLength}
@@ -106,7 +106,7 @@ export default function Projects() {
               <li
                 onClick={() => handleUseProject(id)}
                 key={`key-${index}`}
-                className="relative cursor-pointer pl-8 py-4 pr-3 grid group gap-2 xs:gap-4 grid-cols-[1fr,auto] xs:grid-cols-[1fr,auto,100px] text-white items-center bg-opacity-25 cursor bg-true-gray-600 bg-opacity-0 transition duration-75 hover:bg-opacity-5"
+                className="relative cursor-pointer pl-8 py-4 pr-3 grid group gap-2 xs:gap-4 grid-cols-[1fr,auto] xs:grid-cols-[1fr,auto,100px] text-white items-center bg-opacity-25 cursor bg-gray-600 bg-opacity-0 transition duration-75 hover:bg-opacity-5"
               >
                 <span
                   className={`text-sm md:text-base lg:text-lg cursor-pointer relative`}
@@ -129,7 +129,7 @@ export default function Projects() {
                   <div />
                 )}
                 <span
-                  className={`text-true-gray-500 text-sm md:text-base lg:text-lg md:justify-self-end`}
+                  className={`text-gray-500 text-sm md:text-base lg:text-lg md:justify-self-end`}
                 >
                   {day + "/" + month + "/" + year}
                 </span>
