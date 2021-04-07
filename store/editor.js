@@ -2,14 +2,13 @@ import { text } from "../constants/text";
 import create from "zustand";
 import { persist } from "zustand/middleware";
 import { getUnique } from "../utils/getUnique";
+import { setHistory } from "../utils/setHistory";
 
 export const useStore = create(
   persist(
     (set) => ({
       active: "editor",
-      setActive: (value, id = false) => {
-        set({ active: value });
-      },
+      setActive: (value) => set({ active: value }),
       editor: "js",
       setEditor: (value) => set({ editor: value }),
       editorMobile: true,
@@ -27,7 +26,8 @@ export const useStore = create(
       currentJS: "",
       setCurrentJS: (value) =>
         set({ currentJS: value === "" || value === undefined ? "" : value }),
-      setAll: (id, current, css, html, js) => {
+      setAll: (id, current, css, html, js, replace = false) => {
+        set({ active: "editor" });
         set({
           current: current,
           currentID: id,
@@ -35,12 +35,11 @@ export const useStore = create(
           currentHTML: html,
           currentJS: js,
         });
-        history.replaceState(
-          {
-            id: value,
-          },
-          "",
-          "/project/" + id
+        setHistory(
+          id,
+          replace === false
+            ? "/project/" + id
+            : window.location.href.split("?r=")[0]
         );
       },
     }),

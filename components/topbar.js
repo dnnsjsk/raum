@@ -92,7 +92,7 @@ export default function TopBar() {
                   className={`absolute top-[40px] rounded-b md:rounded-bl right-0 flex flex-col py-2 px-4 bg-gray-800 shadow-lg border ${style.border}`}
                 >
                   <Menu.Item onClick={setCopied}>
-                    <a className={moreLink}>Copy Project</a>
+                    <a className={moreLink}>Share Project</a>
                   </Menu.Item>
                   <Menu.Item onClick={handleDuplicateProject}>
                     <a className={moreLink}>Duplicate project</a>
