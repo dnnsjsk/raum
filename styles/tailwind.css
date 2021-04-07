@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply overscroll-none overflow-hidden;
+  @apply overscroll-none overflow-hidden invisible;
   font-family: Inter, sans-serif;
 }
 
