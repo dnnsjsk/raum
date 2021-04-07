@@ -6,8 +6,8 @@ import { useStore as useProjectStore } from "../store/projects";
 
 export default function SidebarButton(props) {
   const active = useEditorStore((state) => state.active);
-  const setActive = useEditorStore((state) => state.setActive);
   const projectsCount = useProjectStore((state) => state.projectsCount);
+  const setActive = useEditorStore((state) => state.setActive);
 
   return (
     <Switch

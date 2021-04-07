@@ -3,10 +3,10 @@ import { getDoc } from "../utils/getDoc";
 
 export default function Content() {
   const active = useEditorStore((state) => state.active);
-  const editorMobile = useEditorStore((state) => state.editorMobile);
   const currentCSS = useEditorStore((state) => state.currentCSS);
   const currentHTML = useEditorStore((state) => state.currentHTML);
   const currentJS = useEditorStore((state) => state.currentJS);
+  const editorMobile = useEditorStore((state) => state.editorMobile);
 
   function handleDoc() {
     const css = atob(currentCSS);
