@@ -84,8 +84,6 @@ export default function Index() {
       setActive("editor", splitId);
     } else if (window.location.href.includes("projects")) {
       setActive("projects");
-    } else if (window.location.href.includes("about")) {
-      setActive("about");
     } else if (localStorage.getItem("projects")) {
       setAllProjects(id, {
         css: projects.current[id]["css"],

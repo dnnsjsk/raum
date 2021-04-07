@@ -2,7 +2,6 @@ import { style } from "../constants/style";
 import dynamic from "next/dynamic";
 
 import TerminalIcon from "@heroicons/react/solid/TerminalIcon";
-import QuestionMarkCircleIcon from "@heroicons/react/solid/QuestionMarkCircleIcon";
 import CollectionIcon from "@heroicons/react/solid/CollectionIcon";
 
 export default function Sidebar() {
@@ -19,9 +18,6 @@ export default function Sidebar() {
           <span className={"hidden md:block"}>Raum</span>
         </div>
         <div className={`divide-y border-b ${style.divide} ${style.border}`}>
-          <Button type="about">
-            <QuestionMarkCircleIcon className={classIcon} />
-          </Button>
           <Button type="editor">
             <TerminalIcon className={classIcon} />
           </Button>
