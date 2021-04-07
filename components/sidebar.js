@@ -15,8 +15,8 @@ export default function Sidebar() {
         <div
           className={`h-[40px] pointer-events-none text-xs text-white flex justify-center items-center w-full font-mono font-medium border-b ${style.border}`}
         >
-          <span className={'md:hidden'}>R</span>
-          <span className={'hidden md:block'}>Raum</span>
+          <span className={"md:hidden"}>R</span>
+          <span className={"hidden md:block"}>Raum</span>
         </div>
         <div className={`divide-y border-b ${style.divide} ${style.border}`}>
           <Button type="about">

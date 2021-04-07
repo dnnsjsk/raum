@@ -9,10 +9,14 @@ export default function SidebarButton(props) {
   const projectsCount = useProjectStore((state) => state.projectsCount);
   const setActive = useEditorStore((state) => state.setActive);
 
+  function handleClick() {
+    setActive(props.type);
+  }
+
   return (
     <Switch
       checked={active === props.type}
-      onChange={() => setActive(props.type)}
+      onChange={handleClick}
       className={`w-full py-3 md:py-4 text-xs relative uppercase grid gap-2 ${
         style.color
       } ${style.hover}

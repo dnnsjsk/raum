@@ -7,14 +7,14 @@ import { useEffect } from "react";
 import { useStore } from "../store/editor";
 
 export default function Index() {
-  const setActive = useStore((state) => state.setActive);
-
   const Main = dynamic(() => import("../components/main"), {
     ssr: false,
   });
   const Content = dynamic(() => import("../components/content"), {
     ssr: false,
   });
+
+  const setActive = useStore((state) => state.setActive);
 
   useEffect(() => {
     if (window.location.href.includes("?r=")) {
