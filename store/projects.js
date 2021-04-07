@@ -58,6 +58,9 @@ export const useStore = create(
         set(() => ({
           projects: {},
         })),
+      projectsCount: "",
+      setProjectsCount: () =>
+        set((state) => ({ projectsCount: Object.keys(state.projects).length })),
     }),
     {
       name: "projects",

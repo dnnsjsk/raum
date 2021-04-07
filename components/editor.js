@@ -37,13 +37,14 @@ export default function Editor() {
   const currentId = useEditorStore((state) => state.currentID);
   const language = useEditorStore((state) => state.editor);
   const projects = useRef(useProjectStore.getState().projects);
+  const setAll = useEditorStore((state) => state.setAll);
+  const setAllProjects = useProjectStore((state) => state.setAllProjects);
   const setCurrentCSS = useEditorStore((state) => state.setCurrentCSS);
   const setCurrentHTML = useEditorStore((state) => state.setCurrentHTML);
   const setCurrentJS = useEditorStore((state) => state.setCurrentJS);
-  const setAll = useEditorStore((state) => state.setAll);
-  const setProject = useProjectStore((state) => state.setProject);
-  const setAllProjects = useProjectStore((state) => state.setAllProjects);
   const setEditor = useEditorStore((state) => state.setEditor);
+  const setProject = useProjectStore((state) => state.setProject);
+  const setProjectsCount = useProjectStore((state) => state.setProjectsCount);
 
   const id =
     currentId ||
@@ -104,6 +105,7 @@ export default function Editor() {
         object["html"],
         object["js"]
       );
+      setProjectsCount();
       setEditor("js");
       history.pushState("default", "", window.location.href.split("?r=")[0]);
     } else if (!localStorage.getItem("projects") || isEmpty(projects)) {
@@ -112,6 +114,7 @@ export default function Editor() {
         html: "",
         js: "",
       });
+      setProjectsCount();
       setAll(id, text.emptyProject, "", "", "");
     }
 

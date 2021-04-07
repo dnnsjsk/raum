@@ -22,6 +22,7 @@ export default function TopBar() {
   const setAll = useEditorStore((state) => state.setAll);
   const setEditorMobile = useEditorStore((state) => state.setEditorMobile);
   const setProject = useProjectStore((state) => state.setProject);
+  const setProjectsCount = useProjectStore((state) => state.setProjectsCount);
 
   const [copied, setCopied] = useClipboard(
     `${window.location}?r=${encodeURIComponent(
@@ -43,6 +44,7 @@ export default function TopBar() {
     setProject(id, "html", currentHTML);
     setProject(id, "js", currentJS);
     setAll(id, current + " Duplicate", css, html, js);
+    setProjectsCount();
     setEditorMobile(true);
   }
 
@@ -52,6 +54,7 @@ export default function TopBar() {
     setProject(id, "html", "");
     setProject(id, "js", "");
     setAll(id, text.emptyProject, "", "", "");
+    setProjectsCount();
     setEditorMobile(true);
   }
 

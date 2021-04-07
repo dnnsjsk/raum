@@ -18,6 +18,7 @@ export default function Projects() {
   const setAll = useEditorStore((state) => state.setAll);
   const setEditorMobile = useEditorStore((state) => state.setEditorMobile);
   const setProject = useProjectStore((state) => state.setProject);
+  const setProjectsCount = useProjectStore((state) => state.setProjectsCount);
 
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
 
@@ -48,6 +49,7 @@ export default function Projects() {
       projects[newId]["html"],
       projects[newId]["js"]
     );
+    setProjectsCount();
     forceUpdate();
   }
 
@@ -59,6 +61,7 @@ export default function Projects() {
     setProject(id, "html", "");
     setProject(id, "js", "");
     setAll(id, text.emptyProject, "", "", "");
+    setProjectsCount();
     setEditorMobile(true);
     setActive("editor");
   }
