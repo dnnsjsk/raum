@@ -45,12 +45,6 @@ export const useStore = create(
           currentHTML: html,
           currentJS: js,
         }),
-      setBlank: () =>
-        set({
-          currentCSS: "",
-          currentHTML: "",
-          currentJS: "",
-        }),
     }),
     {
       name: "general",
