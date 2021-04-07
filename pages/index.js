@@ -57,6 +57,7 @@ export default function Index() {
         js: "",
       });
       setAll(id, text.emptyProject, "", "", "");
+      setActive("editor", id);
     } else if (
       window.location.href.includes("/project/") &&
       projects.current[window.location.href.split("/project/").pop()]
