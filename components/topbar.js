@@ -1,7 +1,7 @@
 import { text } from "../constants/text";
 import { style } from "../constants/style";
 
-import { useStore as useEditorStore } from "../store/editor";
+import { useStore, useStore as useEditorStore } from "../store/editor";
 import { useStore as useProjectStore } from "../store/projects";
 import useClipboard from "react-use-clipboard";
 import { getUnique } from "../utils/getUnique";
@@ -18,7 +18,9 @@ export default function TopBar() {
   const currentHTML = useEditorStore((state) => state.currentHTML);
   const currentJS = useEditorStore((state) => state.currentJS);
   const icon = `w-5`;
+  const id = getUnique();
   const moreLink = `text-white text-sm whitespace-nowrap py-1 cursor-pointer hover:underline`;
+  const setActive = useStore((state) => state.setActive);
   const setAll = useEditorStore((state) => state.setAll);
   const setEditorMobile = useEditorStore((state) => state.setEditorMobile);
   const setProject = useProjectStore((state) => state.setProject);
@@ -36,25 +38,22 @@ export default function TopBar() {
   );
 
   function handleDuplicateProject() {
-    const id = getUnique();
-    const css = currentCSS;
-    const html = currentHTML;
-    const js = currentJS;
     setProject(id, "css", currentCSS, current + " Duplicate");
     setProject(id, "html", currentHTML);
     setProject(id, "js", currentJS);
-    setAll(id, current + " Duplicate", css, html, js);
+    setAll(id, current + " Duplicate", currentCSS, currentHTML, currentJS);
     setProjectsCount();
+    setActive("editor", id);
     setEditorMobile(true);
   }
 
   function handleNewProject() {
-    const id = getUnique();
     setProject(id, "css", "");
     setProject(id, "html", "");
     setProject(id, "js", "");
     setAll(id, text.emptyProject, "", "", "");
     setProjectsCount();
+    setActive("editor", id);
     setEditorMobile(true);
   }
 
