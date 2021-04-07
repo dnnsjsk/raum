@@ -13,22 +13,6 @@ export default function Main() {
 
   const active = useStore((state) => state.active);
 
-  useEffect(() => {
-    /**
-     * Get real viewport height.
-     */
-    function vh() {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh * 100}px`);
-    }
-
-    vh();
-
-    window.addEventListener("resize", () => {
-      vh();
-    });
-  }, []);
-
   return (
     <div>
       {active === "projects" ? (

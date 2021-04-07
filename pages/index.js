@@ -18,6 +18,22 @@ export default function Index() {
 
   useEffect(() => {
     setActive("editor");
+
+    /**
+     * Get real viewport height.
+     */
+    function vh() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh * 100}px`);
+    }
+
+    vh();
+
+    window.addEventListener("resize", () => {
+      vh();
+    });
+
+    document.body.classList.add("loaded");
   });
 
   return (

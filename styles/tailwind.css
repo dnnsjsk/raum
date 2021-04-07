@@ -5,8 +5,10 @@
 body {
   @apply overscroll-none overflow-hidden;
   font-family: Inter, sans-serif;
-  height: 100vh;
-  width: 100vw;
+}
+
+body.loaded {
+  @apply visible;
 }
 
 *,
