@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import Sidebar from "../components/sidebar";
 import { useStore } from "../store/editor";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 export default function Index() {
   const Main = dynamic(() => import("../components/main"), {
@@ -16,7 +16,7 @@ export default function Index() {
 
   const setActive = useStore((state) => state.setActive);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setActive("editor");
 
     /**
@@ -32,8 +32,6 @@ export default function Index() {
     window.addEventListener("resize", () => {
       vh();
     });
-
-    document.body.classList.add("loaded");
   });
 
   return (

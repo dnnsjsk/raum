@@ -157,6 +157,8 @@ export default function Editor() {
     }
 
     setProjectsCount();
+
+    document.body.classList.add("loaded");
   });
 
   return (
