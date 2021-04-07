@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import Sidebar from "../components/sidebar";
 import { useStore } from "../store/editor";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 export default function Index() {
   const Main = dynamic(() => import("../components/main"), {
@@ -16,7 +16,7 @@ export default function Index() {
 
   const setActive = useStore((state) => state.setActive);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setActive("editor");
 
     /**
