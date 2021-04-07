@@ -18,14 +18,13 @@ export default function Index() {
     ssr: false,
   });
 
+  const id = useEditorStore((state) => state.currentID) || getUnique();
+  const projects = useRef(useProjectStore.getState().projects);
   const setActive = useStore((state) => state.setActive);
   const setAll = useEditorStore((state) => state.setAll);
   const setAllProjects = useProjectStore((state) => state.setAllProjects);
   const setEditor = useEditorStore((state) => state.setEditor);
   const setProjectsCount = useProjectStore((state) => state.setProjectsCount);
-  const projects = useRef(useProjectStore.getState().projects);
-
-  const id = useEditorStore((state) => state.currentID) || getUnique();
 
   useEffect(() => {
     if (window.location.href.includes("?r=")) {

@@ -34,14 +34,13 @@ export default function Editor() {
     automaticLayout: true,
   };
 
+  const id = useEditorStore((state) => state.currentID) || getUnique();
   const language = useEditorStore((state) => state.editor);
   const projects = useRef(useProjectStore.getState().projects);
   const setCurrentCSS = useEditorStore((state) => state.setCurrentCSS);
   const setCurrentHTML = useEditorStore((state) => state.setCurrentHTML);
   const setCurrentJS = useEditorStore((state) => state.setCurrentJS);
   const setProject = useProjectStore((state) => state.setProject);
-
-  const id = useEditorStore((state) => state.currentID) || getUnique();
 
   function handleEditorChange(value) {
     setProject(id, language, btoa(value));
