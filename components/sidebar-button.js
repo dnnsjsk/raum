@@ -6,11 +6,12 @@ import { useStore as useProjectStore } from "../store/projects";
 
 export default function SidebarButton(props) {
   const active = useEditorStore((state) => state.active);
+  const currentId = useEditorStore((state) => state.currentID);
   const projectsCount = useProjectStore((state) => state.projectsCount);
   const setActive = useEditorStore((state) => state.setActive);
 
   function handleClick() {
-    setActive(props.type);
+    setActive(props.type, props.type === "projects" ? false : currentId);
   }
 
   return (

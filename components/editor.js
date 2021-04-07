@@ -34,22 +34,14 @@ export default function Editor() {
     automaticLayout: true,
   };
 
-  const currentId = useEditorStore((state) => state.currentID);
   const language = useEditorStore((state) => state.editor);
   const projects = useRef(useProjectStore.getState().projects);
-  const setAll = useEditorStore((state) => state.setAll);
-  const setAllProjects = useProjectStore((state) => state.setAllProjects);
   const setCurrentCSS = useEditorStore((state) => state.setCurrentCSS);
   const setCurrentHTML = useEditorStore((state) => state.setCurrentHTML);
   const setCurrentJS = useEditorStore((state) => state.setCurrentJS);
-  const setEditor = useEditorStore((state) => state.setEditor);
   const setProject = useProjectStore((state) => state.setProject);
-  const setProjectsCount = useProjectStore((state) => state.setProjectsCount);
 
-  const id =
-    currentId ||
-    Object.keys(projects[Object.keys(projects)[0]])[0] ||
-    getUnique();
+  const id = useEditorStore((state) => state.currentID) || getUnique();
 
   function handleEditorChange(value) {
     setProject(id, language, btoa(value));
@@ -85,39 +77,6 @@ export default function Editor() {
   }
 
   useEffect(() => {
-    if (window.location.href.includes("?r=")) {
-      const newId = getUnique();
-      const string = window.location.href.split("?r=").pop();
-      const object = JSON.parse(decodeURIComponent(string));
-      setAllProjects(
-        newId,
-        {
-          css: object["css"],
-          html: object["html"],
-          js: object["js"],
-        },
-        object["name"] === "" ? text.emptyProject : object["name"]
-      );
-      setAll(
-        newId,
-        object["name"],
-        object["css"],
-        object["html"],
-        object["js"]
-      );
-      setProjectsCount();
-      setEditor("js");
-      history.pushState("default", "", window.location.href.split("?r=")[0]);
-    } else if (!localStorage.getItem("projects") || isEmpty(projects)) {
-      setAllProjects(id, {
-        css: "",
-        html: "",
-        js: "",
-      });
-      setProjectsCount();
-      setAll(id, text.emptyProject, "", "", "");
-    }
-
     /**
      * Set up monaco.
      */

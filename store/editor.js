@@ -7,7 +7,19 @@ export const useStore = create(
   persist(
     (set) => ({
       active: "editor",
-      setActive: (value) => set({ active: value }),
+      setActive: (value, id = false) => {
+        set({ active: value });
+
+        const obj = {
+          id: value,
+          randomData: Math.random(),
+        };
+        if (id === false) {
+          history.replaceState(obj, "", "/" + value);
+        } else {
+          history.replaceState(obj, "", "/project/" + id);
+        }
+      },
       editor: "js",
       setEditor: (value) => set({ editor: value }),
       editorMobile: true,

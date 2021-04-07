@@ -31,7 +31,7 @@ export default function Projects() {
       projects[id]["html"],
       projects[id]["js"]
     );
-    setActive("editor");
+    setActive("editor", id);
   }
 
   function handleDelete(e, id) {
@@ -63,7 +63,7 @@ export default function Projects() {
     setAll(id, text.emptyProject, "", "", "");
     setProjectsCount();
     setEditorMobile(true);
-    setActive("editor");
+    setActive("editor", id);
   }
 
   return (
@@ -71,9 +71,7 @@ export default function Projects() {
       <div
         className={`flex h-[40px] sticky top-0 z-10 ${style.bg} justify-between items-center flex-wrap px-3 border-b ${style.border}`}
       >
-        <h1
-          className={`text-gray-500 text-sm border-b-2 border-transparent`}
-        >
+        <h1 className={`text-gray-500 text-sm border-b-2 border-transparent`}>
           <strong className={`font-semibold text-white`}>
             {projectsLength}
           </strong>{" "}
