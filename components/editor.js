@@ -99,7 +99,7 @@ export default function Editor() {
 
     if (window.location.href.includes("?share=")) {
       const newId = getUnique();
-      const string = window.location.href.split("?share=")[1];
+      const string = window.location.href.split("?s=")[1];
       const object = JSON.parse(decodeURIComponent(string));
       setProject(
         newId,
