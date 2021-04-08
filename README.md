@@ -32,3 +32,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+Dabbling in React/Next.js, quite the amazing developer experience. Push to git for immediate deployment is quite an
+amazing workflow. Have to figure out something similar for WordPress. Anyone else using it?
+
+My first project is a mini prototyping/code sharing tool. It automatically saves everything to localStorage so data
+persists between visits. Can also share projects via URL:

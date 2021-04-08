@@ -61,11 +61,7 @@ export default function Projects() {
     const id = getUnique();
 
     deleteProjects();
-    setProject(id, {
-      css: "",
-      html: "",
-      js: "",
-    });
+    setProject(id);
     setAll(id, text.emptyProject);
     setProjectsCount();
     setEditorMobile(true);

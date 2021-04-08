@@ -97,7 +97,7 @@ export default function Editor() {
       });
     }
 
-    if (window.location.href.includes("?share=")) {
+    if (window.location.href.includes("?s=")) {
       const newId = getUnique();
       const string = window.location.href.split("?s=")[1];
       const object = JSON.parse(decodeURIComponent(string));
