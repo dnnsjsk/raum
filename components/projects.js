@@ -1,7 +1,7 @@
 import { style } from "../constants/style";
 import { text } from "../constants/text";
 import { useStore as useProjectStore } from "../store/projects";
-import { useStore, useStore as useEditorStore } from "../store/editor";
+import { useStore as useEditorStore } from "../store/editor";
 import { useReducer } from "react";
 
 import TrashIcon from "@heroicons/react/solid/TrashIcon";
@@ -22,7 +22,9 @@ export default function Projects() {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
 
   function handleUseProject(id) {
-    setProject(id, language, projects[id]["name"][language]);
+    setProject(id, {
+      [language]: projects[id]["name"][language],
+    });
     setAll(
       id,
       projects[id]["name"] || text.emptyProject,
@@ -39,13 +41,17 @@ export default function Projects() {
       projects[Object.keys(projects)[Object.keys(projects).length - 1]]["id"];
     const newName =
       projects[Object.keys(projects)[Object.keys(projects).length - 1]]["name"];
-    setProject(newId, language, projects[newId][language]);
+    setProject(newId, {
+      [language]: projects[newId][language],
+    });
     setAll(
       newId,
       newName,
       projects[newId]["css"],
       projects[newId]["html"],
-      projects[newId]["js"]
+      projects[newId]["js"],
+      false,
+      "projects"
     );
     setProjectsCount();
     forceUpdate();
@@ -55,10 +61,12 @@ export default function Projects() {
     const id = getUnique();
 
     deleteProjects();
-    setProject(id, "css", "");
-    setProject(id, "html", "");
-    setProject(id, "js", "");
-    setAll(id, text.emptyProject, "", "", "");
+    setProject(id, {
+      css: "",
+      html: "",
+      js: "",
+    });
+    setAll(id, text.emptyProject);
     setProjectsCount();
     setEditorMobile(true);
   }

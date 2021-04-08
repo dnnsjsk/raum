@@ -26,14 +26,22 @@ export const useStore = create(
       currentJS: "",
       setCurrentJS: (value) =>
         set({ currentJS: value === "" || value === undefined ? "" : value }),
-      setAll: (id, current, css, html, js, replace = false) => {
-        set({ active: "editor" });
+      setAll: (
+        id,
+        current,
+        css,
+        html,
+        js,
+        replace = false,
+        active = "editor"
+      ) => {
+        set({ active: active });
         set({
           current: current,
           currentID: id,
-          currentCSS: css,
-          currentHTML: html,
-          currentJS: js,
+          currentCSS: css ? css : "",
+          currentHTML: html ? html : "",
+          currentJS: js ? js : "",
         });
         setHistory(
           id,

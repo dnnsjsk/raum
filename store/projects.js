@@ -5,12 +5,13 @@ import { merge, unset } from "lodash";
 
 export const useStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       projects: {},
-      setProject: (id, type, value, name = false) =>
+      setProject: (id, value, name = false) =>
         set((state) => ({
           projects: merge(state.projects, {
             [id]: {
+              id: id,
               name: name
                 ? name
                 : state.projects[id] && state.projects[id]["name"]
@@ -20,28 +21,24 @@ export const useStore = create(
                 state.projects[id] && state.projects[id]["date"]
                   ? state.projects[id]["date"]
                   : Date.now(),
-              id: id,
-              [type]: value,
-            },
-          }),
-        })),
-      setAllProjects: (id, value, name = false) =>
-        set((state) => ({
-          projects: merge(state.projects, {
-            [id]: {
-              name: name
-                ? name
-                : state.projects[id] && state.projects[id]["name"]
-                ? state.projects[id]["name"]
-                : text.emptyProject,
-              date:
-                state.projects[id] && state.projects[id]["date"]
-                  ? state.projects[id]["date"]
-                  : Date.now(),
-              id: id,
-              css: value.css,
-              html: value.html,
-              js: value.js,
+              css:
+                value && value.css
+                  ? value.css
+                  : state.projects[id]
+                  ? state.projects[id]["css"]
+                  : "",
+              html:
+                value && value.html
+                  ? value.html
+                  : state.projects[id]
+                  ? state.projects[id]["html"]
+                  : "",
+              js:
+                value && value.js
+                  ? value.js
+                  : state.projects[id]
+                  ? state.projects[id]["js"]
+                  : "",
             },
           }),
         })),

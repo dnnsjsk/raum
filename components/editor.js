@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
 import { useMonaco } from "@monaco-editor/react";
-import { useStore, useStore as useEditorStore } from "../store/editor";
+import { useStore as useEditorStore } from "../store/editor";
 import { useStore as useProjectStore } from "../store/projects";
 import { useEffect, useRef } from "react";
 
@@ -38,7 +38,6 @@ export default function Editor() {
   const language = useEditorStore((state) => state.editor);
   const projects = useRef(useProjectStore.getState().projects);
   const setAll = useEditorStore((state) => state.setAll);
-  const setAllProjects = useProjectStore((state) => state.setAllProjects);
   const setCurrentCSS = useEditorStore((state) => state.setCurrentCSS);
   const setCurrentHTML = useEditorStore((state) => state.setCurrentHTML);
   const setCurrentJS = useEditorStore((state) => state.setCurrentJS);
@@ -47,7 +46,9 @@ export default function Editor() {
   const setProjectsCount = useProjectStore((state) => state.setProjectsCount);
 
   function handleEditorChange(value) {
-    setProject(id, language, btoa(value));
+    setProject(id, {
+      [language]: btoa(value),
+    });
 
     if (language === "css") {
       setCurrentCSS(btoa(value));
@@ -100,7 +101,7 @@ export default function Editor() {
       const newId = getUnique();
       const string = window.location.href.split("?r=").pop();
       const object = JSON.parse(decodeURIComponent(string));
-      setAllProjects(
+      setProject(
         newId,
         {
           css: object["css"],
@@ -119,19 +120,15 @@ export default function Editor() {
       );
       setEditor("js");
     } else if (!localStorage.getItem("projects") || isEmpty(projects)) {
-      setAllProjects(id, {
-        css: "",
-        html: "",
-        js: "",
-      });
-      setAll(id, text.emptyProject, "", "", "");
+      setProject(id);
+      setAll(id, text.emptyProject);
       setEditor("js");
     } else if (
       window.location.href.includes("/project/") &&
       projects.current[window.location.href.split("/project/").pop()]
     ) {
       const splitId = window.location.href.split("/project/").pop();
-      setAllProjects(splitId, {
+      setProject(splitId, {
         css: projects.current[splitId]["css"],
         html: projects.current[splitId]["html"],
         js: projects.current[splitId]["js"],
@@ -144,7 +141,7 @@ export default function Editor() {
         projects.current[splitId]["js"]
       );
     } else if (localStorage.getItem("projects")) {
-      setAllProjects(id, {
+      setProject(id, {
         css: projects.current[id]["css"],
         html: projects.current[id]["html"],
         js: projects.current[id]["js"],

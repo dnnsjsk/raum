@@ -1,6 +1,5 @@
 import { style } from "../constants/style";
 
-import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useStore } from "../store/editor";
 

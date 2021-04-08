@@ -1,7 +1,7 @@
 import { text } from "../constants/text";
 import { style } from "../constants/style";
 
-import { useStore, useStore as useEditorStore } from "../store/editor";
+import { useStore as useEditorStore } from "../store/editor";
 import { useStore as useProjectStore } from "../store/projects";
 import useClipboard from "react-use-clipboard";
 import { getUnique } from "../utils/getUnique";
@@ -37,19 +37,23 @@ export default function TopBar() {
   );
 
   function handleDuplicateProject() {
-    setProject(id, "css", currentCSS, current + " Duplicate");
-    setProject(id, "html", currentHTML);
-    setProject(id, "js", currentJS);
+    setProject(
+      id,
+      {
+        css: currentCSS,
+        html: currentHTML,
+        js: currentJS,
+      },
+      current + " Duplicate"
+    );
     setAll(id, current + " Duplicate", currentCSS, currentHTML, currentJS);
     setProjectsCount();
     setEditorMobile(true);
   }
 
   function handleNewProject() {
-    setProject(id, "css", "");
-    setProject(id, "html", "");
-    setProject(id, "js", "");
-    setAll(id, text.emptyProject, "", "", "");
+    setProject(id);
+    setAll(id, text.emptyProject);
     setProjectsCount();
     setEditorMobile(true);
   }
