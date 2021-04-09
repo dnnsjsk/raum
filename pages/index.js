@@ -37,6 +37,20 @@ export default function Index() {
   return (
     <div className={`overflow-hidden w-full h-[var(--vh)] ${style.bg}`}>
       <Head>
+        <link
+          rel="icon"
+          href="/static/images/favicon-32x32.png"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          href="/static/images/favicon-192x192.png"
+          sizes="192x192"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          href="/static/images/favicon-180x180.png"
+        />
         <title>Raum</title>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
