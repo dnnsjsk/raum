@@ -26,14 +26,14 @@ export default function TopBar() {
   const setProjectsCount = useProjectStore((state) => state.setProjectsCount);
 
   const [copied, setCopied] = useClipboard(
-    `${window.location}?s=${encodeURIComponent(
+    `${window.location.origin}?s=${encodeURIComponent(
       JSON.stringify({
         name: current,
         css: currentCSS,
         html: currentHTML,
         js: currentJS,
       })
-    )}?s=`
+    )}s=`
   );
 
   function handleDuplicateProject() {
