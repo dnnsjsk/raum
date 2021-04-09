@@ -100,8 +100,11 @@ export default function Editor() {
     if (window.location.href.includes("?s=")) {
       const newId = getUnique();
       const href = window.location.href;
-      const string = href.substr(0, href.lastIndexOf("&fbclid")).split("?s=")[1];
-      console.log(string)
+      const string = (href.includes("&fbclid")
+        ? href.substr(0, href.lastIndexOf("&fbclid"))
+        : href
+      ).split("?s=")[1];
+      console.log(string);
       const object = JSON.parse(decodeURIComponent(string));
       setProject(
         newId,
