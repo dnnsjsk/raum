@@ -33,7 +33,7 @@ export default function TopBar() {
         html: currentHTML,
         js: currentJS,
       })
-    )}s=`
+    )}`
   );
 
   function handleDuplicateProject() {
