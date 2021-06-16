@@ -4,6 +4,9 @@ import EyeIcon from "@heroicons/react/solid/EyeIcon";
 import EyeOffIcon from "@heroicons/react/solid/EyeOffIcon";
 import { useStore as useEditorStore } from "../store/editor";
 
+/**
+ * Topbar icon.
+ */
 export default function TopBarIcon(props) {
   const editorMobile = useEditorStore((state) => state.editorMobile);
   const setEditorMobile = useEditorStore((state) => state.setEditorMobile);

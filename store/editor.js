@@ -4,6 +4,9 @@ import { persist } from "zustand/middleware";
 import { getUnique } from "../utils/getUnique";
 import { setHistory } from "../utils/setHistory";
 
+/**
+ * Editor store.
+ */
 export const useStore = create(
   persist(
     (set) => ({
@@ -26,15 +29,7 @@ export const useStore = create(
       currentJS: "",
       setCurrentJS: (value) =>
         set({ currentJS: value === "" || value === undefined ? "" : value }),
-      setAll: (
-        id,
-        current,
-        css,
-        html,
-        js,
-        replace = false,
-        active = "editor"
-      ) => {
+      setAll: (id, current, html, css, js, active = "editor") => {
         set({ active: active });
         set({
           current: current,
@@ -43,12 +38,7 @@ export const useStore = create(
           currentHTML: html ? html : "",
           currentJS: js ? js : "",
         });
-        setHistory(
-          id,
-          replace === false
-            ? "/project/" + id
-            : window.location.href.split("?r=")[0]
-        );
+        setHistory(id);
       },
     }),
     {

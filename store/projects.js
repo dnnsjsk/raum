@@ -3,6 +3,9 @@ import { text } from "../constants/text";
 import { persist } from "zustand/middleware";
 import { merge, unset } from "lodash";
 
+/**
+ * Project store.
+ */
 export const useStore = create(
   persist(
     (set) => ({
@@ -21,17 +24,17 @@ export const useStore = create(
                 state.projects[id] && state.projects[id]["date"]
                   ? state.projects[id]["date"]
                   : Date.now(),
-              css:
-                value && value.css
-                  ? value.css
-                  : state.projects[id]
-                  ? state.projects[id]["css"]
-                  : "",
               html:
                 value && value.html
                   ? value.html
                   : state.projects[id]
                   ? state.projects[id]["html"]
+                  : "",
+              css:
+                value && value.css
+                  ? value.css
+                  : state.projects[id]
+                  ? state.projects[id]["css"]
                   : "",
               js:
                 value && value.js

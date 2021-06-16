@@ -7,6 +7,9 @@ import { useStore } from "../store/editor";
 import { useEffect } from "react";
 
 export default function Index() {
+  /**
+   * Turn off SSR.
+   */
   const Main = dynamic(() => import("../components/main"), {
     ssr: false,
   });

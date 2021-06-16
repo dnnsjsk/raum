@@ -7,6 +7,9 @@ import { useReducer } from "react";
 import TrashIcon from "@heroicons/react/solid/TrashIcon";
 import { getUnique } from "../utils/getUnique";
 
+/**
+ * Project list.
+ */
 export default function Projects() {
   const currentId = useEditorStore((state) => state.currentID);
   const deleteProject = useProjectStore((state) => state.deleteProject);
@@ -28,8 +31,8 @@ export default function Projects() {
     setAll(
       id,
       projects[id]["name"] || text.emptyProject,
-      projects[id]["css"],
       projects[id]["html"],
+      projects[id]["css"],
       projects[id]["js"]
     );
   }
@@ -47,10 +50,9 @@ export default function Projects() {
     setAll(
       newId,
       newName,
-      projects[newId]["css"],
       projects[newId]["html"],
+      projects[newId]["css"],
       projects[newId]["js"],
-      false,
       "projects"
     );
     setProjectsCount();

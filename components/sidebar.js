@@ -4,6 +4,9 @@ import dynamic from "next/dynamic";
 import TerminalIcon from "@heroicons/react/solid/TerminalIcon";
 import CollectionIcon from "@heroicons/react/solid/CollectionIcon";
 
+/**
+ * Sidebar.
+ */
 export default function Sidebar() {
   const classIcon = "w-5 place-self-center";
   const Button = dynamic(() => import("./sidebar-button"), { ssr: false });

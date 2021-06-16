@@ -8,7 +8,11 @@ import { useEffect, useRef } from "react";
 import { isEmpty } from "lodash";
 import { getUnique } from "../utils/getUnique";
 import { text } from "../constants/text";
+import { welcome } from "../constants/welcome";
 
+/**
+ * The code editor.
+ */
 export default function Editor() {
   /**
    * Setup editor.
@@ -97,20 +101,23 @@ export default function Editor() {
       });
     }
 
+    /**
+     * If URL is shareable link.
+     */
     if (window.location.href.includes("?s=")) {
       const newId = getUnique();
       const href = window.location.href;
-      const string = (href.includes("&fbclid")
-        ? href.substr(0, href.lastIndexOf("&fbclid"))
-        : href
+      const string = (
+        href.includes("&fbclid")
+          ? href.substr(0, href.lastIndexOf("&fbclid"))
+          : href
       ).split("?s=")[1];
-      console.log(string);
       const object = JSON.parse(decodeURIComponent(string));
       setProject(
         newId,
         {
-          css: object["css"],
           html: object["html"],
+          css: object["css"],
           js: object["js"],
         },
         object["name"] === "" ? text.emptyProject : object["name"]
@@ -118,44 +125,55 @@ export default function Editor() {
       setAll(
         newId,
         object["name"],
-        object["css"],
         object["html"],
-        object["js"],
-        false
+        object["css"],
+        object["js"]
       );
-      setEditor("js");
+      setEditor("html");
+      /**
+       * If local storage is empty. (= new visitor)
+       */
     } else if (!localStorage.getItem("projects") || isEmpty(projects)) {
-      setProject(id);
-      setAll(id, text.emptyProject);
-      setEditor("js");
+      setProject(id, {
+        html: btoa(welcome.html),
+        css: btoa(welcome.css),
+      });
+      setAll(id, text.emptyProject, btoa(welcome.html), btoa(welcome.css));
+      setEditor("html");
+      /**
+       * If URL is project and exists in library.
+       */
     } else if (
       window.location.href.includes("/project/") &&
       projects.current[window.location.href.split("/project/").pop()]
     ) {
       const splitId = window.location.href.split("/project/").pop();
       setProject(splitId, {
-        css: projects.current[splitId]["css"],
         html: projects.current[splitId]["html"],
+        css: projects.current[splitId]["css"],
         js: projects.current[splitId]["js"],
       });
       setAll(
         splitId,
         projects.current[splitId]["name"],
-        projects.current[splitId]["css"],
         projects.current[splitId]["html"],
+        projects.current[splitId]["css"],
         projects.current[splitId]["js"]
       );
+      /**
+       * Otherwise get first project item.
+       */
     } else if (localStorage.getItem("projects")) {
       setProject(id, {
-        css: projects.current[id]["css"],
         html: projects.current[id]["html"],
+        css: projects.current[id]["css"],
         js: projects.current[id]["js"],
       });
       setAll(
         id,
         projects.current[id]["name"],
-        projects.current[id]["css"],
         projects.current[id]["html"],
+        projects.current[id]["css"],
         projects.current[id]["js"]
       );
     }

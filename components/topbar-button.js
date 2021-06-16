@@ -3,6 +3,9 @@ import { style } from "../constants/style";
 import { Switch } from "@headlessui/react";
 import { useStore as useEditorStore, useStore } from "../store/editor";
 
+/**
+ * Topbar button.
+ */
 export default function TopbarButton(props) {
   const editor = useStore((state) => state.editor);
   const setEditor = useStore((state) => state.setEditor);

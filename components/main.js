@@ -3,6 +3,9 @@ import { style } from "../constants/style";
 import dynamic from "next/dynamic";
 import { useStore } from "../store/editor";
 
+/**
+ * Main wrapper.
+ */
 export default function Main() {
   const TopBar = dynamic(() => import("./topbar"), { ssr: false });
   const Editor = dynamic(() => import("../components/editor"), { ssr: false });

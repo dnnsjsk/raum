@@ -5,6 +5,9 @@ import { useStore as useEditorStore } from "../store/editor";
 import { useStore as useProjectStore } from "../store/projects";
 import { useRef } from "react";
 
+/**
+ * Name input.
+ */
 export default function Name() {
   const current = useEditorStore((state) => state.current);
   const currentID = useEditorStore((state) => state.currentID);

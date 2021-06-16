@@ -1,6 +1,9 @@
 import { useStore as useEditorStore } from "../store/editor";
 import { getDoc } from "../utils/getDoc";
 
+/**
+ * The content. (right side)
+ */
 export default function Content() {
   const active = useEditorStore((state) => state.active);
   const currentCSS = useEditorStore((state) => state.currentCSS);

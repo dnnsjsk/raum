@@ -4,6 +4,9 @@ import { Switch } from "@headlessui/react";
 import { useStore as useEditorStore } from "../store/editor";
 import { useStore as useProjectStore } from "../store/projects";
 
+/**
+ * Sidebar button.
+ */
 export default function SidebarButton(props) {
   const active = useEditorStore((state) => state.active);
   const projectsCount = useProjectStore((state) => state.projectsCount);

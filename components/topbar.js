@@ -12,6 +12,9 @@ import Name from "./name";
 import { Menu } from "@headlessui/react";
 import DotsHorizontalIcon from "@heroicons/react/solid/DotsHorizontalIcon";
 
+/**
+ * Top bar.
+ */
 export default function TopBar() {
   const current = useEditorStore((state) => state.current);
   const currentCSS = useEditorStore((state) => state.currentCSS);
@@ -40,13 +43,13 @@ export default function TopBar() {
     setProject(
       id,
       {
-        css: currentCSS,
         html: currentHTML,
+        css: currentCSS,
         js: currentJS,
       },
       current + " Duplicate"
     );
-    setAll(id, current + " Duplicate", currentCSS, currentHTML, currentJS);
+    setAll(id, current + " Duplicate", currentHTML, currentCSS, currentJS);
     setProjectsCount();
     setEditorMobile(true);
   }
@@ -71,13 +74,13 @@ export default function TopBar() {
         className={`z-10 flex relative -left-px lg:left-0 divide-x ${style.divide} justify-end max-w-max`}
       >
         <div className={`border-l ${style.border}`}>
-          <TopBarButton type="js" />
-        </div>
-        <div>
           <TopBarButton type="html" />
         </div>
         <div>
           <TopBarButton type="css" />
+        </div>
+        <div>
+          <TopBarButton type="js" />
         </div>
         <div className={"relative"}>
           <Menu>
