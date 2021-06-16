@@ -19,6 +19,7 @@ body {
 }
   
 h1 {
+  background: white;
   font-family: sans-serif;
   padding: var(--space);
   border-radius: 0.5rem;
