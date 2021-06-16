@@ -14,6 +14,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@tailwindcss/jit": "0.1.18",
     "@headlessui/react": "^1.2.0",
     "@heroicons/react": "1.0.1",
     "@monaco-editor/react": "^4.1.1",
